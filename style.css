@@ -1,0 +1,29 @@
+.body {
+    display: flex;
+}
+
+.grid-container {
+    display: flex;
+    height: 800px;
+    width: 800px;
+    flex-direction: column;
+}
+
+.grid-row {
+    display: flex;
+    flex: 0 0 1;
+}
+
+.grid-square {
+    border: .5px solid black;
+    box-sizing: border-box;
+    flex: none;
+}
+
+.grid-square:hover {
+    background: black;
+}
+
+.grid-square.paint {
+    background-color: black;
+}
