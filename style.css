@@ -1,12 +1,33 @@
-.body {
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 30px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    gap: 50px;
+    margin: 0;
+}
+.header {
+    font-weight: 700;
+    font-size: 80px;
+}
+
+.app {
+    display: flex;
+    gap: 100px;
+    margin: 20px;
 }
 
 .grid-container {
     display: flex;
+    flex-direction: column;
     height: 800px;
     width: 800px;
-    flex-direction: column;
+    border: 2px solid gray;
+    box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.5);
+    
+    
 }
 
 .grid-row {
@@ -26,4 +47,46 @@
 
 .grid-square.paint {
     background-color: black;
+}
+
+/* slider styl change: instructions from https: //blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/ */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+
+    overflow: hidden;
+    border-radius: 16px; 
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 25px;
+    background: #ccc;  
+    border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+
+    height: 25px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2.5px solid black;
+    box-shadow: -407px 0 0 400px rgb(186, 181, 209);
+    
+}
+
+.footer {
+    height: 55px;
+    background: black;
+    font-weight: 900;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
