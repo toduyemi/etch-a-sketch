@@ -9,13 +9,15 @@
     <title>etch sum sketch</title>
 </head>
 <body>
-    <div class="header">Pixel Sketch</div>
+    <div class="header">pixel sketch</div>
     <div class="app">
         <div class="controls">
             <div class="slider-container">
-                <div class="control-value">16x16</div>
+                <div class="control-value">canvas: 16x16</div>
                 <input type="range" id="grid-control" min="2" max="120" value="16" step="1" />
             </div>
+            <button class="pen" id="shade">toggle shade</button>
+            <button type="button" class="pen" id="eraser" >toggle erase</button>
         </div>
         <div class="grid-container"></div>
     </div>
