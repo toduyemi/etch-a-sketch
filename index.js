@@ -20,21 +20,17 @@ gridControl.addEventListener('input',  (e) => {
 });
 
 
-
-eraseToggle.addEventListener('click', (e) => {
-    
+eraseToggle.addEventListener('click', (e) => {   
     toggleErase ^= true;
-    console.log(toggleErase);
-
-    // if (toggleErase){
-    //     eraseToggle.setAttribute('style', 'background-color: rgb(168, 168, 168);');
-    // }
-
-    // else {
-    //     eraseToggle.setAttribute('style', 'background-color: white;');
-    // }
-
+    if (toggleErase) {
+        eraseToggle.classList.add('active')
+    }
+    
+    else {
+        eraseToggle.classList.remove('active')
+    }
 });
+
 
 
 //canvas functionalities
@@ -86,7 +82,7 @@ gridContainer.addEventListener('mousedown', (e) => {
         e.target.classList.add('paint')
     }
     else {
-        e.target.classList.add('erase');
+        e.target.classList.remove('paint');
     }
     
     
@@ -102,7 +98,7 @@ gridContainer.addEventListener('mouseover', (e) => {
             e.target.classList.add('paint')
         }
         else {
-            e.target.classList.add('erase');
+            e.target.classList.remove('paint');
         }
     }
     
