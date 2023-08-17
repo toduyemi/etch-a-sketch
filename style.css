@@ -88,7 +88,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
-.pen {
+.paint-btns {
     font-family: inherit;
     font-size: inherit;
     box-shadow: none;
@@ -99,11 +99,11 @@ input[type="range"]::-webkit-slider-thumb {
     background: none;
 }
 
-.pen:hover {
+.paint-btns:hover {
     background-color: rgb(168, 168, 168);
 }
 
-.pen.active {
+.paint-btns.active {
     background-color: rgb(168, 168, 168);
 }
 
