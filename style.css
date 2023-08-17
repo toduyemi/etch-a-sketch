@@ -93,7 +93,8 @@ input[type="range"]::-webkit-slider-thumb {
     box-shadow: none;
     border: 3px solid black;
     padding-bottom: 2px;
-    ;
+    margin-left: 6px;
+    border-radius: 4px;
     background: none;
 }
 
