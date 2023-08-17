@@ -15,3 +15,4 @@ Plans for future:
   
 ~Add a palette of colours for paintbrush.  
 ~Complete automated test-suite.  
+~Bug fix: when I erase or shade square, the hover effect ceases to work for that square. 
