@@ -53,7 +53,7 @@ shadeToggle.addEventListener('click', (e) => {
     }
 });
 
-function computeShade(currentShade, shadeIncrements) {
+function computeShade(currentShade) {
     let red;
     let green;
     let blue;
