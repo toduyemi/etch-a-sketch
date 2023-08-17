@@ -1,6 +1,8 @@
 # pixel sketch
 
-etch-a-sketch practice broject
+etch-a-sketch practice broject  
+  
+press and hold mouse down to start sketching! drag the mouse till your lines are complete. then release.  
 
 Features:  
   
