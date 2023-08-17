@@ -42,11 +42,11 @@ body {
 }
 
 .grid-square:hover {
-    background: black;
+    background: rgb(0, 0, 0);
 }
 
 .grid-square.paint {
-    background-color: black;
+    background-color:rgb(0, 0, 0);
 }
 
 .grid-square.erase {
@@ -85,6 +85,7 @@ input[type="range"]::-webkit-slider-thumb {
     box-shadow: -407px 0 0 400px rgb(186, 181, 209);
     
 }
+
 
 .pen {
     font-family: inherit;

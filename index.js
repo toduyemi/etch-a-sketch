@@ -12,6 +12,8 @@ const eraseToggle = document.querySelector('#eraser');
 let mouseDown = false;
 let gridPrint = false;
 let toggleErase = false;
+let toggleShade = false;
+let currentShade;
 
 //control functionalities
 gridControl.addEventListener('input',  (e) => {
@@ -20,18 +22,59 @@ gridControl.addEventListener('input',  (e) => {
 });
 
 
-eraseToggle.addEventListener('click', (e) => {   
+eraseToggle.addEventListener('click', (e) => {
+
     toggleErase ^= true;
+    toggleShade = false;
+
+    //to style active buttons on gui
     if (toggleErase) {
-        eraseToggle.classList.add('active')
+        eraseToggle.classList.add('active');
+        shadeToggle.classList.remove('active');
     }
-    
+
     else {
-        eraseToggle.classList.remove('active')
+        eraseToggle.classList.remove('active');
     }
 });
 
+shadeToggle.addEventListener('click', (e) => {
+    toggleShade ^= true;
+    toggleErase = false;
 
+    //to style active buttons on gui
+    if (toggleShade) {
+        shadeToggle.classList.add('active');
+        eraseToggle.classList.remove('active');
+    }
+
+    else {
+        shadeToggle.classList.remove('active');
+    }
+});
+
+function computeShade(currentShade, shadeIncrements) {
+    let red;
+    let green;
+    let blue;
+
+    red = 255 - (25.5 * (currentShade));
+    green = 255 - (25.5 * (currentShade));
+    blue = 255 - (25.5 * (currentShade));
+
+    let shade = [red, green, blue];
+
+    return shade;
+}
+
+function cap10(x) {
+    if (x > 10) {
+        return 10;
+    }
+    else {
+        return x;
+    }
+}
 
 //canvas functionalities
 function createGrid(dimension) {
@@ -45,6 +88,7 @@ function createGrid(dimension) {
         for (let j = 0; j < dimension; j++) {
             const gridSquare = document.createElement('div');
             gridSquare.classList.add('grid-square');
+            gridSquare.setAttribute('data-shade', '1');
             gridSquare.style.width = `${GRIDLENGTH / dimension}px`;
             gridSquare.style.height = `${GRIDLENGTH / dimension}px`;
             gridRow.appendChild(gridSquare);
@@ -75,14 +119,30 @@ gridControl.addEventListener('input', transformGrid);
 
 
 // painting functionality - whyd does it only target the square and not the whole grid?
-gridContainer.addEventListener('mousedown', (e) => {
-    console.log('yo');
-    mouseDown = true;
-    if (!toggleErase) {
-        e.target.classList.add('paint')
+function paint(e)   {
+    if (!toggleErase && !toggleShade) {
+        e.target.style.backgroundColor = `rgb(0, 0, 0)`;
+        e.target.setAttribute('data-shade', '10');
     }
-    else {
-        e.target.classList.remove('paint');
+    else if (!toggleShade) {
+        e.target.style.backgroundColor = `rgb(255, 255, 255)`;
+        e.target.setAttribute('data-shade', '1');
+    }
+
+    if (toggleShade) {
+
+        let shade = computeShade(currentShade);
+        e.target.style.backgroundColor = `rgb(${shade[0]}, ${shade[1]}, ${shade[2]})`;
+        e.target.setAttribute('data-shade', `${cap10(currentShade + 1)}`);
+    }
+}
+
+gridContainer.addEventListener('mousedown', (e) => {
+    currentShade = +e.target.getAttribute('data-shade');
+    mouseDown = true;
+    // prevents styling of components of gridcontainer that aren't individual squares
+    if (currentShade) {
+        paint(e);
     }
     
     
@@ -93,15 +153,11 @@ gridContainer.addEventListener('mouseup', () => {
 });
 
 gridContainer.addEventListener('mouseover', (e) => {
-    if (mouseDown) {
-        if (!toggleErase) {
-            e.target.classList.add('paint')
-        }
-        else {
-            e.target.classList.remove('paint');
-        }
-    }
-    
+    currentShade = +e.target.getAttribute('data-shade');
+    // prevents styling of components of gridcontainer that aren't individual squares
+    if (mouseDown && currentShade) {  
+        paint(e);
+    } 
 });
 
 
