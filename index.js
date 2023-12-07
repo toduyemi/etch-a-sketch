@@ -1,6 +1,5 @@
 const GRIDLENGTH = 800;
 
-
 const gridContainer =  document.querySelector('.grid-container');
 
 const gridControl = document.querySelector('#grid-control');
@@ -20,7 +19,6 @@ gridControl.addEventListener('input',  (e) => {
     const newSliderValue = e.target.value;
     gridControlValue.textContent = `canvas: ${newSliderValue}x${newSliderValue}`;
 });
-
 
 eraseToggle.addEventListener('click', (e) => {
 
@@ -116,10 +114,8 @@ createGrid(16);
 gridControl.addEventListener('input', transformGrid);
 
 
-
-
 // painting functionality - whyd does it only target the square and not the whole grid?
-function paint(e)   {
+function paint(e) {
     if (!toggleErase && !toggleShade) {
         e.target.style.backgroundColor = `rgb(0, 0, 0)`;
         e.target.setAttribute('data-shade', '10');
@@ -129,8 +125,7 @@ function paint(e)   {
         e.target.setAttribute('data-shade', '1');
     }
 
-    if (toggleShade) {
-
+    else if (toggleShade) {
         let shade = computeShade(currentShade);
         e.target.style.backgroundColor = `rgb(${shade[0]}, ${shade[1]}, ${shade[2]})`;
         e.target.setAttribute('data-shade', `${cap10(currentShade + 1)}`);
@@ -140,12 +135,10 @@ function paint(e)   {
 gridContainer.addEventListener('mousedown', (e) => {
     currentShade = +e.target.getAttribute('data-shade');
     mouseDown = true;
-    // prevents styling of components of gridcontainer that aren't individual squares
+    // bug fix: prevents styling of components of gridcontainer that aren't individual squares (border of grid-container element)
     if (currentShade) {
         paint(e);
     }
-    
-    
  });
 
 gridContainer.addEventListener('mouseup', () => {
@@ -154,7 +147,7 @@ gridContainer.addEventListener('mouseup', () => {
 
 gridContainer.addEventListener('mouseover', (e) => {
     currentShade = +e.target.getAttribute('data-shade');
-    // prevents styling of components of gridcontainer that aren't individual squares
+    // bug fix: prevents styling of components of gridcontainer that aren't individual squares (border of grid-container element)
     if (mouseDown && currentShade) {  
         paint(e);
     } 

@@ -101,10 +101,12 @@ input[type="range"]::-webkit-slider-thumb {
 
 .paint-btns:hover {
     background-color: rgb(168, 168, 168);
+    cursor: pointer;
 }
 
 .paint-btns.active {
     background-color: rgb(168, 168, 168);
+    cursor: pointer;
 }
 
 .footer {
